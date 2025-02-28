@@ -1,6 +1,6 @@
 import { titleFont } from "@/config/fonts";
 
-export default function Home() {
+export default function Shop() {
   return (
     <main>
       <h1>Hola Mundo</h1>
