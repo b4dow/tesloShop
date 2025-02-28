@@ -1,5 +1,16 @@
 "use client";
-import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
+import Link from "next/link";
+import {
+  IoCloseOutline,
+  IoLogInOutline,
+  IoLogOutOutline,
+  IoPeopleOutline,
+  IoPersonOutline,
+  IoSearchOutline,
+  IoShirtOutline,
+  IoTicketOutline,
+} from "react-icons/io5";
+import { LinkSide } from "./components";
 
 export const Sidebar = () => {
   return (
@@ -29,6 +40,43 @@ export const Sidebar = () => {
             className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 border-gray-20 focus:outline-none focus:border-blue-500"
           />
         </div>
+
+        {/* Menu */}
+        <LinkSide
+          title="Perfil"
+          href="/"
+          icon={<IoPersonOutline size={30} />}
+        />
+
+        <LinkSide
+          title="Ordenes"
+          href="/"
+          icon={<IoTicketOutline size={30} />}
+        />
+        <LinkSide
+          title="Ingresar"
+          href="/"
+          icon={<IoLogInOutline size={30} />}
+        />
+        <LinkSide title="Salir" icon={<IoLogOutOutline size={30} />} href="/" />
+
+        {/* Line Separator */}
+        <div className="w-full h-px bg-gray-300 my-10" />
+        <LinkSide
+          title="Productos"
+          icon={<IoShirtOutline size={30} />}
+          href="/"
+        />
+        <LinkSide
+          title="Ordenes"
+          icon={<IoTicketOutline size={30} />}
+          href="/"
+        />
+        <LinkSide
+          title="Usuarios"
+          icon={<IoPeopleOutline size={30} />}
+          href="/"
+        />
       </nav>
     </div>
   );
