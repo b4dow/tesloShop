@@ -6,3 +6,6 @@ export * from "./ui/not-found/PageNotFound";
 // Products
 export * from "./products/product-grid/ProductGrid";
 export * from "./products/product-grid/ProductGridItem";
+
+// Menu Mobile
+export * from "./ui/sidebar/Sidebar";
