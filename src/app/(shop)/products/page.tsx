@@ -1,7 +1,7 @@
-export default function ProductsPage() {
+export default function ProductsPage({ products }: Props) {
   return (
     <div>
-      <h1>Products Page</h1>
+      <h1>List Products Page</h1>
     </div>
   );
 }
