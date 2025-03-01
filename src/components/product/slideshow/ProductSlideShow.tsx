@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import "./slideshow.css";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Autoplay, FreeMode, Navigation, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
 interface Props {
@@ -34,7 +34,9 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         }
         spaceBetween={10}
         navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2"
       >
@@ -43,6 +45,28 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
             <Image
               width={1024}
               height={800}
+              src={`/products/${image}`}
+              alt={title}
+              className="rounded-lg object-cover"
+              unoptimized
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper"
+      >
+        {images.map((image) => (
+          <SwiperSlide key={image}>
+            <Image
+              width={300}
+              height={300}
               src={`/products/${image}`}
               alt={title}
               className="rounded-lg "
