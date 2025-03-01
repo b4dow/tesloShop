@@ -1,3 +1,4 @@
+import { SizeSelector } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
@@ -24,6 +25,10 @@ export default async function ProductPage({ params }: Props) {
         </h1>
         <p className="text-lg mb-5">${product.price}</p>
         {/* Selector de Tallas */}
+        <SizeSelector
+          selectedSize={product.sizes[2]}
+          availableSizes={product.sizes}
+        />
         {/* Selector de Cantidad */}
         {/* Button */}
         <button className="btn-primary my-5">Agregar al carrito</button>

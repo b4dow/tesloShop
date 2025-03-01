@@ -9,3 +9,6 @@ export * from "./products/product-grid/ProductGridItem";
 
 // Menu Mobile
 export * from "./ui/sidebar/Sidebar";
+
+// Product
+export * from "./product/size-selector/SizeSelector";
