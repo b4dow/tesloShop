@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import "./slideshow.css";
-import { Autoplay, FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 import Image from "next/image";
 
 interface Props {
@@ -30,6 +30,8 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
           {
             "--swiper-navigation-color": "#fff",
             "--swiper-pagination-color": "#fff",
+            width: "50vw",
+            height: "800px",
           } as React.CSSProperties
         }
         spaceBetween={10}
@@ -37,7 +39,7 @@ export const ProductSlideShow = ({ images, title, className }: Props) => {
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Thumbs, Pagination]}
         className="mySwiper2"
       >
         {images.map((image) => (
