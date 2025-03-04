@@ -9,6 +9,13 @@ Este proyecto es un E-commerce inspirado en la tienda de Tesla, desarrollado com
    las variables de entorno
 3. Instalar las dependencias con `npm install`
 4. Levantar la base de datos `docker-compose up -d`
-5. Correr el servidor con `npm run dev`
+5. Ver la base de datos en la terminal
+
+```bash
+docker exec -it <id_container>
+psql -U <db_user> -d <db_name> /bin/bash
+```
+
+6. Correr el servidor con `npm run dev`
 
 ## Correr en prod
