@@ -1,5 +1,6 @@
 import { getPaginatedProductsWithImages } from "@/actions";
 import { ProductGrid, Title } from "@/components";
+import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: {
@@ -12,6 +13,8 @@ export default async function Shop({ searchParams }: Props) {
   const { products } = await getPaginatedProductsWithImages({
     page,
   });
+
+  if (products.length === 0) redirect("/");
   return (
     <>
       <Title title="Tienda" subtitle="Todos los Productos" className="mb-2" />
