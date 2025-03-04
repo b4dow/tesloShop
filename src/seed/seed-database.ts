@@ -27,19 +27,8 @@ async function main() {
   );
 
   // Productos
-  const { images, type, ...product1 } = products[0];
-  console.log(images);
-  console.log(type);
-  // await prisma.product.create({
-  //   data: {
-  //     ...product1,
-  //     categoryId: categoriesMap["shirts"],
-  //   },
-  // });
-
   products.forEach(async (product) => {
     const { type, images, ...rest } = product;
-    console.log(images);
 
     const dbProduct = await prisma.product.create({
       data: {
@@ -47,9 +36,17 @@ async function main() {
         categoryId: categoriesMap[type],
       },
     });
-    console.log(dbProduct);
     // Images
+    const imagesData = images.map((image) => ({
+      url: image,
+      productId: dbProduct.id,
+    }));
+
+    await prisma.productImage.createMany({
+      data: imagesData,
+    });
   });
+
   console.log("seed executed");
 }
 
