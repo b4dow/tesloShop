@@ -25,10 +25,35 @@ async function main() {
     },
     {} as Record<string, string>,
   );
+
+  // Productos
+  const { images, type, ...product1 } = products[0];
+  console.log(images);
+  console.log(type);
+  // await prisma.product.create({
+  //   data: {
+  //     ...product1,
+  //     categoryId: categoriesMap["shirts"],
+  //   },
+  // });
+
+  products.forEach(async (product) => {
+    const { type, images, ...rest } = product;
+    console.log(images);
+
+    const dbProduct = await prisma.product.create({
+      data: {
+        ...rest,
+        categoryId: categoriesMap[type],
+      },
+    });
+    console.log(dbProduct);
+    // Images
+  });
+  console.log("seed executed");
 }
 
 (() => {
   if (process.env.NODE_ENV === "production") return;
   main();
-  console.log("seed executed");
 })();
