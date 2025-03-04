@@ -22,6 +22,12 @@ psql -U <db_user> -d <db_name> /bin/bash
 npx prisma migrate dev
 ```
 
+6.Ejecutar el seed
+
+```bash
+npm run seed
+```
+
 7.Correr el servidor con `npm run dev`
 
 ## Correr en prod
