@@ -48,6 +48,7 @@ export const getPaginatedProductsWithImages = async ({
       })),
     };
   } catch (error) {
+    console.log(error);
     throw new Error("error al cargar los productos");
   }
 };
