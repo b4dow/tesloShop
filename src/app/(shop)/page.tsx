@@ -6,7 +6,7 @@ interface Props {
   searchParams: Promise<{ page?: string }>;
 }
 
-export default async function Shop(props: Props) {
+export default async function Home(props: Props) {
   const searchParams = await props.searchParams;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const { products, totalPages } = await getPaginatedProductsWithImages({
