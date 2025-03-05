@@ -20,7 +20,7 @@ export const Pagination = ({ totalPages }: Props) => {
       return `${pathname}?${params.toString()}`;
     }
 
-    if (+pageNumber === 0) {
+    if (+pageNumber <= 0) {
       return `${pathname}`;
     }
 
