@@ -1,16 +1,34 @@
 export const revalidate = 60 * 60 * 24 * 7;
+import { Metadata } from "next";
 import { getProductBySlug } from "@/actions";
 import {
   ProductMobileSlideShow,
   ProductSlideShow,
   QuantitySelector,
   SizeSelector,
+  StockLabel,
 } from "@/components";
 import { titleFont } from "@/config/fonts";
 import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  const product = await getProductBySlug(slug);
+
+  return {
+    title: product?.title,
+    description: product?.description,
+    openGraph: {
+      title: product?.title,
+      description: product?.description,
+      images: [`/products/${product?.image[1]}`],
+    },
+  };
 }
 
 export default async function ProductPage({ params }: Props) {
@@ -39,6 +57,8 @@ export default async function ProductPage({ params }: Props) {
       </div>
       {/* Detalles */}
       <div className="col-span-1 px-5 ">
+        <StockLabel slug={product.slug} />
+
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
           {product.title}
         </h1>

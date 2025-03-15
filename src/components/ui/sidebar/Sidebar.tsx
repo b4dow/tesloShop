@@ -18,7 +18,7 @@ export const Sidebar = () => {
 
   const closeMenu = useUIStore((state) => state.closeSideMenu);
   return (
-    <div>
+    <>
       {/* Background back */}
       {isSideMenuOpen && (
         <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"></div>
@@ -95,6 +95,6 @@ export const Sidebar = () => {
           href="/"
         />
       </nav>
-    </div>
+    </>
   );
 };
